@@ -244,7 +244,7 @@ console.log("Test treeapp alert");
             callback();
           }
         }
-      });
+      }, "json");
     },
 
     deleteProductInCart: function () {
