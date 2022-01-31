@@ -238,13 +238,10 @@ console.log("Test treeapp alert");
           quantity: quantity,
           id: global.variantId,
           async: false
-        }],
-        success: function (){
-          if(typeof callback === "function"){
-            callback();
-          }
-        }
-      }, "json");
+        }]},
+        function (data, status){
+          console.log(data, status);
+        }, "json");
     },
 
     deleteProductInCart: function () {
