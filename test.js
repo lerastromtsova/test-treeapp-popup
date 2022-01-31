@@ -258,9 +258,11 @@ console.log("Test treeapp alert");
     addProductToCart: function (callback) {
       var quantity = 1;
       this.jq.post('/cart/add.js', {
-        quantity: quantity,
-        id: global.variantId,
-        async: false,
+        items: [{
+          quantity: quantity,
+          id: global.variantId,
+          async: false
+        }],
         success: function (){
           if(typeof callback === "function"){
             callback();
