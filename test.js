@@ -134,6 +134,7 @@ console.log("Test treeapp alert");
           clickConfirmButton: function () {
             jQuery(".treeapp-header").click();
             global.addProductToCart();
+            location.reload();
           },
 
           eventListener: function () {
@@ -239,17 +240,7 @@ console.log("Test treeapp alert");
           id: global.variantId,
           async: false
         }]},
-        function (data, status){
-          console.log(data, status);
-        }, "json");
-    },
-
-    deleteProductInCart: function () {
-      this.jq.post('/cart/change.js', {
-        quantity: 0,
-        id: global.variantId,
-        async: false
-      });
+        "json");
     },
 
     eventListener: function () {
