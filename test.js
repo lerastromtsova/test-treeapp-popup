@@ -241,7 +241,7 @@ console.log("Test treeapp alert");
           async: false
         }]
       };
-      this.jq.post('/cart/add.js', data.toString(), function(data) { console.log(data);}, "json");
+      this.jq.post('/cart/add.js', data.toString(), function(data) { console.log(data);}, "text");
     },
 
     eventListener: function () {
