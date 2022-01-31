@@ -33,7 +33,7 @@ console.log("Test treeapp alert");
 
           prepareContent: function () {
             global.appendContent('<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>');
-            new swal(
+            swal.fire(
               {
                 title: "Plant a tree with your order",
                 text: "Add a tree to your basket for 1 GBP",
@@ -46,27 +46,29 @@ console.log("Test treeapp alert");
                 backdrop: true,
                 customClass:'treeapp-popup',
                 allowOutsideClick: true
-              },
-              function (isConfirmed) {
-                console.log('1');
-                if (isConfirmed) {
-                  console.log('2');
-                  global.addProductToCart();
-                  (function waitForIt() {
-                    setTimeout(function () {
-                      global.checkHasProductInCart(function (result) {
-                        if(result){
-                          if (popup.checkoutClickTarget) {
-                            jQuery(popup.checkoutClickTarget).click();
+              }
+            ).then((result) => {
+                if (result.isConfirmed) {
+                  console.log('1');
+                  if (isConfirmed) {
+                    console.log('2');
+                    global.addProductToCart();
+                    (function waitForIt() {
+                      setTimeout(function () {
+                        global.checkHasProductInCart(function (result) {
+                          if (result) {
+                            if (popup.checkoutClickTarget) {
+                              jQuery(popup.checkoutClickTarget).click();
+                            }
+                          } else {
+                            waitForIt();
                           }
-                        }else{
-                          waitForIt();
-                        }
-                      });
-                    }, 1000);
-                  })();
-                }else{
-                  jQuery(popup.checkoutClickTarget).click();
+                        });
+                      }, 1000);
+                    })();
+                  } else {
+                    jQuery(popup.checkoutClickTarget).click();
+                  }
                 }
               }
             );
