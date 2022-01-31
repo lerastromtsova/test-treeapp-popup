@@ -57,6 +57,9 @@
             );
             console.log('Treeapp popup initialize');
           },
+          findCheckoutLinks: function() {
+            return '#checkout, form[action*="/cart"] button[type="submit"], form[action*="/cart"] input[type="submit"]';
+          },
           eventListener: function () {
             jQuery(document).on('click', popup.findCheckoutLinks(), popup.onCheckoutClick);
           }
