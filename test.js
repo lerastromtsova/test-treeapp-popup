@@ -1,7 +1,7 @@
 console.log("Test treeapp alert");
 
 (function () {
-  var oneTreePlanted = function (jQuery) {
+  var treeappPlugin = function (jQuery) {
     jQuery('body').prepend('');
     jQuery('[data-selector="treeapp-tree-counter"]').html('0');
     jQuery.ajax({
@@ -51,19 +51,6 @@ console.log("Test treeapp alert");
                 if (result.isConfirmed) {
                   global.addProductToCart();
                   console.log("Added product");
-                  (function waitForIt() {
-                    setTimeout(function () {
-                      global.checkHasProductInCart(function (result) {
-                        if (result) {
-                          if (popup.checkoutClickTarget) {
-                            jQuery(popup.checkoutClickTarget).click();
-                          }
-                        } else {
-                          waitForIt();
-                        }
-                      });
-                    }, 1000);
-                  })();
                 } else {
                   jQuery(popup.checkoutClickTarget).click();
                 }
@@ -147,17 +134,6 @@ console.log("Test treeapp alert");
           clickConfirmButton: function () {
             jQuery(".treeapp-header").click();
             global.addProductToCart();
-            (function waitForIt() {
-              setTimeout(function () {
-                global.checkHasProductInCart(function (result) {
-                  if(result){
-                    window.location = '/cart';
-                  }else{
-                    waitForIt();
-                  }
-                });
-              }, 1000);
-            })();
           },
 
           eventListener: function () {
@@ -285,11 +261,11 @@ console.log("Test treeapp alert");
         self.loadScript('//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', function () {
           var jQuery311 = jQuery.noConflict(true);
           self.jq = jQuery311;
-          oneTreePlanted(jQuery311);
+          treeappPlugin(jQuery311);
         });
       } else {
         self.jq = jQuery;
-        oneTreePlanted(jQuery);
+        treeappPlugin(jQuery);
       }
     }
   };
