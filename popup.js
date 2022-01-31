@@ -57,7 +57,10 @@
             );
             console.log('Treeapp popup initialize');
           },
-        }
+          eventListener: function () {
+            jQuery(document).on('click', popup.findCheckoutLinks(), popup.onCheckoutClick);
+          }
+        };
         popup.init()
       }
     })
