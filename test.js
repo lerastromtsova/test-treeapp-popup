@@ -9,10 +9,10 @@ console.log("Test treeapp alert");
       type: "GET",
       success: function (result) {
         var hasProductInCart = false;
-        var variantId = '42319664480486';
+        var productId = '7466879451366';
         if (result.items != undefined) {
           for (var i = 0; i < result.items.length; i++) {
-            if (result.items[i].variant_id == variantId) {
+            if (result.items[i].product_id == productId) {
               hasProductInCart = true;
               break;
             }
