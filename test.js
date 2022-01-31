@@ -9,10 +9,10 @@ console.log("Test treeapp alert");
       type: "GET",
       success: function (result) {
         var hasProductInCart = false;
-        var productId = '7466879451366';
+        var variantId = '42106048872678';
         if (result.items != undefined) {
           for (var i = 0; i < result.items.length; i++) {
-            if (result.items[i].product_id == productId) {
+            if (result.items[i].variant_id == 42106048872678) {
               hasProductInCart = true;
               break;
             }
@@ -203,6 +203,7 @@ console.log("Test treeapp alert");
 
     jq: null,
     productId: '7556676026598',
+    variantId: '42106048872678',
 
     init: function () {
       this.eventListener();
@@ -241,7 +242,7 @@ console.log("Test treeapp alert");
           var hasProductInCart = false;
           if (items != undefined) {
             for (var i = 0; i < items.length; i++) {
-              if (items[i].product_id == global.productId) {
+              if (items[i].variant_id == global.variantId) {
                 hasProductInCart = true;
                 break;
               }
