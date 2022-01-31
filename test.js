@@ -32,8 +32,8 @@ console.log("Test treeapp alert");
           },
 
           prepareContent: function () {
-            // global.appendContent(); styles go here
-            swal(
+            global.appendContent('<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>');
+            new swal(
               {
                 title: "Plant a tree with your order",
                 text: "Add a tree to your basket for 1 GBP",
