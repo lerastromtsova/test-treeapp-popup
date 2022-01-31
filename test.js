@@ -49,26 +49,23 @@ console.log("Test treeapp alert");
               }
             ).then((result) => {
                 if (result.isConfirmed) {
-                  console.log('1');
-                  if (isConfirmed) {
-                    console.log('2');
-                    global.addProductToCart();
-                    (function waitForIt() {
-                      setTimeout(function () {
-                        global.checkHasProductInCart(function (result) {
-                          if (result) {
-                            if (popup.checkoutClickTarget) {
-                              jQuery(popup.checkoutClickTarget).click();
-                            }
-                          } else {
-                            waitForIt();
+                  global.addProductToCart();
+                  console.log("Added product");
+                  (function waitForIt() {
+                    setTimeout(function () {
+                      global.checkHasProductInCart(function (result) {
+                        if (result) {
+                          if (popup.checkoutClickTarget) {
+                            jQuery(popup.checkoutClickTarget).click();
                           }
-                        });
-                      }, 1000);
-                    })();
-                  } else {
-                    jQuery(popup.checkoutClickTarget).click();
-                  }
+                        } else {
+                          waitForIt();
+                        }
+                      });
+                    }, 1000);
+                  })();
+                } else {
+                  jQuery(popup.checkoutClickTarget).click();
                 }
               }
             );
