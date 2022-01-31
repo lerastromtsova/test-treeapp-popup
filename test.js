@@ -234,13 +234,14 @@ console.log("Test treeapp alert");
 
     addProductToCart: function (callback) {
       var quantity = 1;
-      this.jq.post('/cart/add.js', {
+      data = {
         items: [{
           quantity: quantity,
           id: global.variantId,
           async: false
-        }]},
-        "json");
+        }]
+      };
+      this.jq.post('/cart/add.js', data.toString(), function(data) { console.log(data);}, "json");
     },
 
     eventListener: function () {
