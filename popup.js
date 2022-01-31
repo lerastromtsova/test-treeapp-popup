@@ -9,8 +9,9 @@
         let hasProductInCart = false;
         const variantId = 42106048872678;
         if (result.items !== undefined) {
-          for (var i = 0; i < result.items.length; i++) {
+          for (let i = 0; i < result.items.length; i++) {
             console.log(result.items[i]);
+            console.log(result.items[i].variant_id === variantId);
             if (result.items[i].variant_id === variantId) {
               hasProductInCart = true;
               break;
@@ -97,7 +98,7 @@
 
     jq: null,
     productId: '7556676026598',
-    variantId: '42106048872678',
+    variantId: 42106048872678,
 
     init: function () {
       this.eventListener();
