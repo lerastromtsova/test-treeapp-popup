@@ -1,7 +1,5 @@
 console.log("Test treeapp alert");
 
-const swal = require('sweetalert2');
-
 (function () {
   var oneTreePlanted = function (jQuery) {
     jQuery('body').prepend('');
