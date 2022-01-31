@@ -234,7 +234,7 @@ console.log("Test treeapp alert");
 
     addProductToCart: function (callback) {
       var quantity = 1;
-      data = {
+      let data = {
         items: [{
           quantity: quantity,
           id: global.variantId,
