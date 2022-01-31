@@ -50,7 +50,7 @@ console.log("Test treeapp alert");
             ).then((result) => {
                 if (result.isConfirmed) {
                   global.addProductToCart();
-                  console.log("Added product");
+                  location.reload();
                 } else {
                   jQuery(popup.checkoutClickTarget).click();
                 }
