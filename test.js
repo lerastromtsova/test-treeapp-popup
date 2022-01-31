@@ -47,8 +47,10 @@ console.log("Test treeapp alert");
                 customClass:'treeapp-popup',
                 allowOutsideClick: true
               },
-              function (isConfirm) {
-                if (isConfirm) {
+              function (isConfirmed) {
+                console.log('1');
+                if (isConfirmed) {
+                  console.log('2');
                   global.addProductToCart();
                   (function waitForIt() {
                     setTimeout(function () {
