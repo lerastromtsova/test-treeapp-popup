@@ -50,7 +50,7 @@
             ).then((result) => {
                 if (result.isConfirmed) {
                   global.addProductToCart();
-                  location.reload();
+                  // location.reload();
                 } else {
                   jQuery(popup.checkoutClickTarget).click();
                 }
