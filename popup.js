@@ -60,6 +60,27 @@
           findCheckoutLinks: function() {
             return '#checkout, form[action*="/cart"] button[type="submit"], form[action*="/cart"] input[type="submit"]';
           },
+          onCheckoutClick: function(e){
+            const formTypeEl = jQuery(this).parents('form').find('[name="form_type"]');
+            if (formTypeEl.length > 0 && formTypeEl.val() === 'product') {
+              return;
+            }
+
+            if (popup.checkoutClickTarget) {
+              popup.checkoutClickTarget = null;
+              return;
+            }
+
+            if(hasProductInCart){
+              return;
+            }
+            e.preventDefault();
+            popup.checkoutClickTarget = e.target || e.currentTarget;
+            setTimeout(function () {
+              jQuery(".treeapp-popup").css('visibility', 'visible');
+              jQuery(".treeapp-sweet-overlay").css('visibility', 'visible');
+            }, 150);
+          },
           eventListener: function () {
             jQuery(document).on('click', popup.findCheckoutLinks(), popup.onCheckoutClick);
           }
