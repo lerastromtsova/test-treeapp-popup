@@ -10,6 +10,7 @@
         const variantId = '42106048872678';
         if (result.items !== undefined) {
           for (var i = 0; i < result.items.length; i++) {
+            console.log(result.items[i]);
             if (result.items[i].variant_id === variantId) {
               hasProductInCart = true;
               break;
