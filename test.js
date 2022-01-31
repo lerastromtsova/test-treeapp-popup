@@ -1,5 +1,7 @@
 console.log("Test treeapp alert");
 
+const swal = require('sweetalert2');
+
 (function () {
   var oneTreePlanted = function (jQuery) {
     jQuery('body').prepend('');
@@ -12,7 +14,7 @@ console.log("Test treeapp alert");
         var variantId = '42106048872678';
         if (result.items != undefined) {
           for (var i = 0; i < result.items.length; i++) {
-            if (result.items[i].variant_id == 42106048872678) {
+            if (result.items[i].variant_id == variantId) {
               hasProductInCart = true;
               break;
             }
