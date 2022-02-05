@@ -60,10 +60,12 @@
                       console.log('timeout...');
                       global.checkHasProductInCart(function (result) {
                         if(result){
+                          console.log('stop')
                           if (popup.checkoutClickTarget) {
                             jQuery(popup.checkoutClickTarget).click();
                           }
                         }else{
+                          console.log('waiting...')
                           waitForIt();
                         }
                       });
@@ -155,6 +157,29 @@
         }]
       };
       this.jq.post('/cart/add.js', data, function(data) { console.log(data);}, "json");
+    },
+
+    checkHasProductInCart: function (callback) {
+      var self = this;
+      self.jq.ajax({
+        url: "/cart.json?onetree=1",
+        type: "GET",
+        success: function (result) {
+          var items = result.items;
+          var hasProductInCart = false;
+          if (items != undefined) {
+            for (var i = 0; i < items.length; i++) {
+              if (items[i].variant_id == global.variantId) {
+                hasProductInCart = true;
+                break;
+              }
+            }
+          }
+          setTimeout(function () {
+            callback(hasProductInCart)
+          }, 0);
+        }
+      });
     },
 
     eventListener: function () {
