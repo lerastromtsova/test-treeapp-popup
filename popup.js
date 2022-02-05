@@ -6,6 +6,9 @@
       url: "/cart.json?onetree=1",
       type: "GET",
       success: function (result) {
+
+        let isCart = window.location.pathname === '/cart';
+
         let hasProductInCart = false;
         const variantId = 42106048872678;
         if (result.items !== undefined) {
@@ -22,7 +25,8 @@
           checkoutClickTarget: false,
 
           init: function () {
-            if(hasProductInCart){
+            console.log(window.location.pathname);
+            if(hasProductInCart || !isCart){
               return;
             }
             this.prepareContent();
@@ -55,7 +59,6 @@
               }
             );
             console.log('Treeapp popup initialize');
-            console.log(window.location);
           },
 
           findCheckoutLinks: function() {
