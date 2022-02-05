@@ -9,9 +9,11 @@
 
         let isCart = window.location.pathname === '/cart';
 
+        let hasSomethingInCart = false;
         let hasProductInCart = false;
         const variantId = 42106048872678;
         if (result.items !== undefined) {
+          hasSomethingInCart = true;
           for (let i = 0; i < result.items.length; i++) {
             if (result.items[i].variant_id === variantId) {
               hasProductInCart = true;
@@ -25,8 +27,11 @@
           checkoutClickTarget: false,
 
           init: function () {
-            console.log(window.location.pathname);
-            if(hasProductInCart || !isCart){
+            console.log('Has product in cart?', hasProductInCart);
+            console.log('Has something in cart?', hasSomethingInCart);
+            console.log('Is cart?', isCart);
+            console.log('Result', hasProductInCart || !isCart && !hasSomethingInCart)
+            if(hasProductInCart || !isCart && !hasSomethingInCart){
               return;
             }
             this.prepareContent();
