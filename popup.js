@@ -30,7 +30,7 @@
             console.log('Has something in cart?', hasSomethingInCart);
             console.log('Is cart?', isCart);
             console.log('Result', hasProductInCart || !isCart && !hasSomethingInCart)
-            if(hasProductInCart || !isCart && !hasSomethingInCart){
+            if(!(hasSomethingInCart && isCart && !hasProductInCart)){
               return;
             }
             this.prepareContent();
