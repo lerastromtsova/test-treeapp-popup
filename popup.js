@@ -9,11 +9,10 @@
 
         let isCart = window.location.pathname === '/cart';
 
-        let hasSomethingInCart = false;
+        let hasSomethingInCart = result.item_count !== 0;
         let hasProductInCart = false;
         const variantId = 42106048872678;
         if (result.items !== undefined) {
-          hasSomethingInCart = true;
           for (let i = 0; i < result.items.length; i++) {
             if (result.items[i].variant_id === variantId) {
               hasProductInCart = true;
