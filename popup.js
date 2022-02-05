@@ -29,7 +29,6 @@
             console.log('Has product in cart?', hasProductInCart);
             console.log('Has something in cart?', hasSomethingInCart);
             console.log('Is cart?', isCart);
-            console.log('Result', hasProductInCart || !isCart && !hasSomethingInCart)
             if(!(hasSomethingInCart && isCart && !hasProductInCart)){
               return;
             }
@@ -56,7 +55,7 @@
             ).then((result) => {
                 if (result.isConfirmed) {
                   global.addProductToCart();
-                  // location.reload();
+                  location.reload();
                 } else {
                   jQuery(popup.checkoutClickTarget).click();
                 }
