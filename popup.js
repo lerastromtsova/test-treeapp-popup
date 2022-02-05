@@ -55,7 +55,20 @@
             ).then((result) => {
                 if (result.isConfirmed) {
                   global.addProductToCart();
-                  location.reload();
+                  (function waitForIt() {
+                    setTimeout(function () {
+                      console.log('timeout...');
+                      global.checkHasProductInCart(function (result) {
+                        if(result){
+                          if (popup.checkoutClickTarget) {
+                            jQuery(popup.checkoutClickTarget).click();
+                          }
+                        }else{
+                          waitForIt();
+                        }
+                      });
+                    }, 1000);
+                  })();
                 } else {
                   jQuery(popup.checkoutClickTarget).click();
                 }
