@@ -167,11 +167,6 @@ console.log("Test treeapp alert");
         };
 
         widget.init();
-
-
-
-
-
       }
     });
   };

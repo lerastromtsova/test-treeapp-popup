@@ -99,6 +99,7 @@
             }
             e.preventDefault();
             popup.checkoutClickTarget = e.target || e.currentTarget;
+            console.log(popup.checkoutClickTarget);
             setTimeout(function () {
               jQuery(".treeapp-popup").css('visibility', 'visible');
               jQuery(".treeapp-sweet-overlay").css('visibility', 'visible');
@@ -129,7 +130,7 @@
       script.type = "text/javascript";
       if (script.readyState) {
         script.onreadystatechange = function () {
-          if (script.readyState == "loaded" || script.readyState == "complete") {
+          if (script.readyState === "loaded" || script.readyState === "complete") {
             script.onreadystatechange = null;
             callback();
           }
@@ -165,11 +166,11 @@
         url: "/cart.json?onetree=1",
         type: "GET",
         success: function (result) {
-          var items = result.items;
-          var hasProductInCart = false;
-          if (items != undefined) {
-            for (var i = 0; i < items.length; i++) {
-              if (items[i].variant_id == global.variantId) {
+          let items = result.items;
+          let hasProductInCart = false;
+          if (items !== undefined) {
+            for (let i = 0; i < items.length; i++) {
+              if (items[i].variant_id === global.variantId) {
                 hasProductInCart = true;
                 break;
               }
