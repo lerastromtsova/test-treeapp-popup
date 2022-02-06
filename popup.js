@@ -70,6 +70,7 @@
                     }, 1000);
                   })();
                 } else {
+                  console.log('Pressed no');
                   localStorage.setItem('show-treeapp-popup','false');
                 }
               }
