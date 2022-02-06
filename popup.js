@@ -56,6 +56,7 @@
               }
             ).then((result) => {
                 if (result.isConfirmed) {
+                  console.log('Pressed yes');
                   global.addProductToCart();
                   (function waitForIt() {
                     setTimeout(function () {
@@ -73,8 +74,8 @@
                   })();
                 } else {
                   console.log('Pressed no');
-                  localStorage.setItem('show-treeapp-popup','false');
                 }
+                localStorage.setItem('show-treeapp-popup','false');
               }
             );
             console.log('Treeapp popup initialize');
