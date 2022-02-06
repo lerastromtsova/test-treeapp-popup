@@ -61,6 +61,7 @@
                       global.checkHasProductInCart(function (result) {
                         if(result){
                           console.log('stop')
+                          window.location.reload();
                           if (popup.checkoutClickTarget) {
                             jQuery(popup.checkoutClickTarget).click();
                           }
