@@ -8,6 +8,7 @@
       success: function (result) {
 
         let isCart = window.location.pathname === '/cart';
+        let shouldShowPopUp = localStorage.getItem('show-treeapp-popup');
 
         let hasSomethingInCart = result.item_count !== 0;
         let hasProductInCart = false;
@@ -29,7 +30,8 @@
             console.log('Has product in cart?', hasProductInCart);
             console.log('Has something in cart?', hasSomethingInCart);
             console.log('Is cart?', isCart);
-            if(!(hasSomethingInCart && isCart && !hasProductInCart)){
+            console.log('Should show popup?', shouldShowPopUp)
+            if(!(hasSomethingInCart && isCart && !hasProductInCart && shouldShowPopUp !== 'false')){
               return;
             }
             this.prepareContent();
