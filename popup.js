@@ -62,9 +62,6 @@
                         if(result){
                           console.log('stop')
                           window.location.reload();
-                          if (popup.checkoutClickTarget) {
-                            jQuery(popup.checkoutClickTarget).click();
-                          }
                         }else{
                           console.log('waiting...')
                           waitForIt();
@@ -73,7 +70,7 @@
                     }, 1000);
                   })();
                 } else {
-                  jQuery(popup.checkoutClickTarget).click();
+                  localStorage.setItem('show-treeapp-popup','false');
                 }
               }
             );
